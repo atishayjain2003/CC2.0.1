@@ -1,14 +1,21 @@
 from django.urls import path
 from .views import PatientViewSet
 
-patient_viewset = PatientViewSet.as_view({
+# Defining individual views for each action in the PatientViewSet
+create_patient_view = PatientViewSet.as_view({
     'post': 'create',
-    'get': 'get_history',  # Correctly mapping GET to history retrieval
-    'put': 'transition',    # Transition method for PUT requests
+})
+
+get_history_view = PatientViewSet.as_view({
+    'get': 'get_history',
+})
+
+transition_view = PatientViewSet.as_view({
+    'put': 'transition',
 })
 
 urlpatterns = [
-    path('api/patients/', patient_viewset, name='patient-list'),
-    path('api/patients/<int:patient_id>/history/', patient_viewset, name='patient-history'),
-    path('api/patients/<int:patient_id>/transition/', patient_viewset, name='patient-transition'),
+    path('patients/', create_patient_view, name='patient-list'),  # Endpoint for creating a patient
+    path('patients/<int:patient_id>/history/', get_history_view, name='patient-history'),  # Endpoint for retrieving patient history
+    path('patients/<int:patient_id>/transition/', transition_view, name='patient-transition'),  # Endpoint for transitioning patient stages
 ]
