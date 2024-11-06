@@ -3,6 +3,20 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Patient, PatientHistory
 from .serializers import PatientSerializer, PatientHistorySerializer
+from rest_framework import viewsets, status
+from rest_framework.response import Response
+from .models import (
+    Patient, PatientHistory, NewRecommendationsStage, FollowUpStage,
+    ClinicalInterventionStage, QuotationPhaseStage, ReadyToScheduleStage,
+    PreAdmissionPrepStage, PostponedAdmissionsStage, ClinicalStage,
+    InitialTransitionStage, FinalTransitionStage, ClosedStage
+)
+from .serializers import PatientSerializer, PatientHistorySerializer
+from rest_framework import viewsets, status
+from rest_framework.response import Response
+from .models import Patient, PatientHistory, FollowUpStage, ClinicalInterventionStage, QuotationPhaseStage, ReadyToScheduleStage, PreAdmissionPrepStage, PostponedAdmissionsStage, ClinicalStage, InitialTransitionStage, FinalTransitionStage, ClosedStage
+from .serializers import PatientSerializer, PatientHistorySerializer
+from django.shortcuts import get_object_or_404
 
 # Load the state transition JSON structure
 state_transitions = {
@@ -198,6 +212,7 @@ state_transitions = {
 }
 
 class PatientViewSet(viewsets.ViewSet):
+
     def create(self, request):
         serializer = PatientSerializer(data=request.data)
         if serializer.is_valid():
@@ -206,6 +221,9 @@ class PatientViewSet(viewsets.ViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def transition(self, request, patient_id):
+        """
+        Triggers a state transition for the patient based on conditions and moves data to the appropriate stage table.
+        """
         try:
             patient = Patient.objects.get(id=patient_id)
         except Patient.DoesNotExist:
@@ -214,56 +232,12 @@ class PatientViewSet(viewsets.ViewSet):
         previous_cohort = patient.current_cohort
         previous_sub_stage = patient.current_sub_stage
 
+        # Iterate over state transitions and apply conditions
         for transition in state_transitions['state_transitions']:
             if (patient.current_sub_stage == transition['current_sub_stage'] and 
                 patient.current_cohort == transition['current_cohort']):
-                
-                conditions_met = True
 
-                # Check actions
-                for action in transition['conditions'].get('actions', []):
-                    patient_value = getattr(patient, action['condition'], None)
-                    if patient_value is None:
-                        conditions_met = False
-                        break
-
-                    operator = action['operator']
-                    value = action['value']
-                    # Try converting value to integer if it's supposed to be numeric
-                    try:
-                        if isinstance(value, str) and value.isdigit():
-                            value = int(value)
-                    except ValueError:
-                        return Response({"error": "Invalid value for condition"}, status=status.HTTP_400_BAD_REQUEST)
-
-                    # Compare patient value with the specified condition
-                    if operator == ">=" and not (patient_value >= value):
-                        conditions_met = False
-                        break
-                    elif operator == ">" and not (patient_value > value):
-                        conditions_met = False
-                        break
-                    elif operator == "<=" and not (patient_value <= value):
-                        conditions_met = False
-                        break
-                    elif operator == "<" and not (patient_value < value):
-                        conditions_met = False
-                        break
-
-                # Check dispositions
-                for disposition in transition['conditions'].get('dispositions', []):
-                    patient_value = getattr(patient, disposition['condition'], None)
-                    if patient_value is None or patient_value != disposition['value']:
-                        conditions_met = False
-                        break
-
-                    # Handle sub-condition if present
-                    if 'sub_condition' in disposition:
-                        sub_condition = disposition['sub_condition']
-                        sub_patient_value = getattr(patient, sub_condition['condition'], None)
-                        if sub_patient_value is None or sub_patient_value != sub_condition['value']:
-                            conditions_met = False
-                            break
+                conditions_met = self._check_conditions(patient, transition['conditions'])
 
                 if conditions_met:
                     # Update patient's cohort and sub-stage
@@ -281,9 +255,100 @@ class PatientViewSet(viewsets.ViewSet):
                         next_cohort=transition['next_cohort'],
                         next_sub_stage=transition['next_sub_cohort'],
                     )
+
+                    # Move to the appropriate stage
+                    self._move_to_stage(patient)
+
                     return Response({"message": "Patient transitioned successfully", "patient_id": patient.id}, status=status.HTTP_200_OK)
 
         return Response({"message": "No transition applied"}, status=status.HTTP_400_BAD_REQUEST)
+
+    def _check_conditions(self, patient, conditions):
+        """
+        Checks if the conditions are met for the state transition.
+        """
+        conditions_met = True
+
+        # Check actions (e.g., "days_since_follow_up >= 1")
+        for action in conditions.get('actions', []):
+            if not self._evaluate_condition(patient, action):
+                conditions_met = False
+                break
+
+        # Check dispositions (e.g., "clinical_intervention_required == True")
+        for disposition in conditions.get('dispositions', []):
+            if not self._evaluate_condition(patient, disposition):
+                conditions_met = False
+                break
+
+        return conditions_met
+
+    def _evaluate_condition(self, patient, condition):
+        """
+        Evaluates a single condition for the patient.
+        """
+        patient_value = getattr(patient, condition['condition'], None)
+        if patient_value is None:
+            return False
+
+        # Convert value to integer if it's a digit-based condition
+        value = condition['value']
+        if isinstance(value, str) and value.isdigit():
+            value = int(value)
+
+        operator = condition.get('operator', None)
+
+        # Handle comparisons based on the operator
+        if operator == ">=":
+            return patient_value >= value
+        elif operator == ">":
+            return patient_value > value
+        elif operator == "<=":
+            return patient_value <= value
+        elif operator == "<":
+            return patient_value < value
+        elif operator is None:
+            return patient_value == value
+
+        return False
+
+    def _move_to_stage(self, patient):
+        """
+        Moves patient data to the appropriate stage table and clears data from other stages.
+        """
+        # Clear patient data from all stage tables first
+        FollowUpStage.objects.filter(patient=patient).delete()
+        ClinicalInterventionStage.objects.filter(patient=patient).delete()
+        QuotationPhaseStage.objects.filter(patient=patient).delete()
+        ReadyToScheduleStage.objects.filter(patient=patient).delete()
+        PreAdmissionPrepStage.objects.filter(patient=patient).delete()
+        PostponedAdmissionsStage.objects.filter(patient=patient).delete()
+        ClinicalStage.objects.filter(patient=patient).delete()
+        InitialTransitionStage.objects.filter(patient=patient).delete()
+        FinalTransitionStage.objects.filter(patient=patient).delete()
+        ClosedStage.objects.filter(patient=patient).delete()
+
+        # Move data to the appropriate table based on the new cohort and sub-stage
+        if patient.current_cohort == "FollowUp":
+            FollowUpStage.objects.create(patient=patient, days_since_follow_up=patient.days_since_follow_up)
+        elif patient.current_cohort == "ClinicalIntervention":
+            ClinicalInterventionStage.objects.create(patient=patient, clinical_intervention_completed=patient.clinical_intervention_completed)
+        elif patient.current_cohort == "QuotationPhase":
+            QuotationPhaseStage.objects.create(patient=patient, quotation_accepted=patient.quotation_accepted)
+        elif patient.current_cohort == "ReadyToSchedule":
+            ReadyToScheduleStage.objects.create(patient=patient, scheduled_admission=patient.scheduled_admission)
+        elif patient.current_cohort == "PreAdmissionPrep":
+            PreAdmissionPrepStage.objects.create(patient=patient, days_until_admission=patient.days_until_admission, admission_status=patient.admission_status)
+        elif patient.current_cohort == "PostponedAdmissions":
+            PostponedAdmissionsStage.objects.create(patient=patient, scheduled_date_in_past=patient.scheduled_date_in_past)
+        elif patient.current_cohort == "Clinical":
+            ClinicalStage.objects.create(patient=patient, clinical_intervention_completed=patient.clinical_intervention_completed)
+        elif patient.current_cohort == "InitialTransition":
+            InitialTransitionStage.objects.create(patient=patient, lead_management_ends=patient.lead_management_ends)
+        elif patient.current_cohort == "FinalTransition":
+            FinalTransitionStage.objects.create(patient=patient, follow_up_attempts=patient.follow_up_attempts)
+        elif patient.current_cohort == "Closed":
+            ClosedStage.objects.create(patient=patient)
 
     def get_history(self, request, patient_id):
         try:
@@ -295,4 +360,4 @@ class PatientViewSet(viewsets.ViewSet):
         history_entries = PatientHistory.objects.filter(patient=patient)
         serializer = PatientHistorySerializer(history_entries, many=True)
 
-        return Response({"patient_id": patient.id, "history": serializer.data}, status=status.HTTP_200_OK)
+        return Response({"patient_id": patient.id, "history": serializer.data}, status=status.HTTP_200_OK)  
