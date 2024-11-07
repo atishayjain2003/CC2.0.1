@@ -12,7 +12,8 @@ from .models import (
     ClinicalStage, 
     InitialTransitionStage, 
     FinalTransitionStage, 
-    ClosedStage
+    ClosedStage,
+    #PatientStage
 )
 
 # Registering all models in the admin interface
@@ -29,3 +30,4 @@ admin.site.register(ClinicalStage)
 admin.site.register(InitialTransitionStage)
 admin.site.register(FinalTransitionStage)
 admin.site.register(ClosedStage)
+#admin.site.register(PatientStage)

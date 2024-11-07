@@ -210,7 +210,6 @@ state_transitions = {
         }
     ]
 }
-
 class PatientViewSet(viewsets.ViewSet):
 
     def create(self, request):
@@ -316,39 +315,81 @@ class PatientViewSet(viewsets.ViewSet):
         """
         Moves patient data to the appropriate stage table and clears data from other stages.
         """
+        # Save the patient data before moving to a new stage (ensure it's up-to-date)
+        patient.save()
+
         # Clear patient data from all stage tables first
-        FollowUpStage.objects.filter(patient=patient).delete()
-        ClinicalInterventionStage.objects.filter(patient=patient).delete()
-        QuotationPhaseStage.objects.filter(patient=patient).delete()
-        ReadyToScheduleStage.objects.filter(patient=patient).delete()
-        PreAdmissionPrepStage.objects.filter(patient=patient).delete()
-        PostponedAdmissionsStage.objects.filter(patient=patient).delete()
-        ClinicalStage.objects.filter(patient=patient).delete()
-        InitialTransitionStage.objects.filter(patient=patient).delete()
-        FinalTransitionStage.objects.filter(patient=patient).delete()
-        ClosedStage.objects.filter(patient=patient).delete()
+        stage_models = [
+            FollowUpStage, ClinicalInterventionStage, QuotationPhaseStage,
+            ReadyToScheduleStage, PreAdmissionPrepStage, PostponedAdmissionsStage,
+            ClinicalStage, InitialTransitionStage, FinalTransitionStage, ClosedStage
+        ]
+        for stage_model in stage_models:
+            stage_model.objects.filter(patient=patient).delete()
 
         # Move data to the appropriate table based on the new cohort and sub-stage
-        if patient.current_cohort == "FollowUp":
-            FollowUpStage.objects.create(patient=patient, days_since_follow_up=patient.days_since_follow_up)
-        elif patient.current_cohort == "ClinicalIntervention":
-            ClinicalInterventionStage.objects.create(patient=patient, clinical_intervention_completed=patient.clinical_intervention_completed)
-        elif patient.current_cohort == "QuotationPhase":
-            QuotationPhaseStage.objects.create(patient=patient, quotation_accepted=patient.quotation_accepted)
-        elif patient.current_cohort == "ReadyToSchedule":
-            ReadyToScheduleStage.objects.create(patient=patient, scheduled_admission=patient.scheduled_admission)
-        elif patient.current_cohort == "PreAdmissionPrep":
-            PreAdmissionPrepStage.objects.create(patient=patient, days_until_admission=patient.days_until_admission, admission_status=patient.admission_status)
-        elif patient.current_cohort == "PostponedAdmissions":
-            PostponedAdmissionsStage.objects.create(patient=patient, scheduled_date_in_past=patient.scheduled_date_in_past)
-        elif patient.current_cohort == "Clinical":
-            ClinicalStage.objects.create(patient=patient, clinical_intervention_completed=patient.clinical_intervention_completed)
-        elif patient.current_cohort == "InitialTransition":
-            InitialTransitionStage.objects.create(patient=patient, lead_management_ends=patient.lead_management_ends)
-        elif patient.current_cohort == "FinalTransition":
-            FinalTransitionStage.objects.create(patient=patient, follow_up_attempts=patient.follow_up_attempts)
+        stage_instance = None
+        if patient.current_cohort == "Follow-up":
+            stage_instance = FollowUpStage(
+                patient=patient,
+                days_since_follow_up=patient.days_since_follow_up,
+                clinical_intervention_completed=patient.clinical_intervention_completed,
+                quotation_phase_required=patient.quotation_phase_required
+            )
+        elif patient.current_cohort == "Clinical Intervention":
+            stage_instance = ClinicalInterventionStage(
+                patient=patient,
+                clinical_intervention_completed=patient.clinical_intervention_completed,
+                quotation_accepted=patient.quotation_accepted
+            )
+        elif patient.current_cohort == "Quotation Phase":
+            stage_instance = QuotationPhaseStage(
+                patient=patient,
+                quotation_accepted=patient.quotation_accepted,
+                days_since_last_contact=patient.days_since_last_contact
+            )
+        elif patient.current_cohort == "Ready to Schedule":
+            stage_instance = ReadyToScheduleStage(
+                patient=patient,
+                scheduled_admission=patient.scheduled_admission
+            )
+        elif patient.current_cohort == "Pre-Admission Prep":
+            stage_instance = PreAdmissionPrepStage(
+                patient=patient,
+                days_until_admission=patient.days_until_admission,
+                admission_status=patient.admission_status
+            )
+        elif patient.current_cohort == "Postponed Admissions":
+            stage_instance = PostponedAdmissionsStage(
+                patient=patient,
+                scheduled_date_in_past=patient.scheduled_date_in_past,
+                admission_completed=patient.admission_completed
+            )
+        elif patient.current_cohort == "Clinical Stage":
+            stage_instance = ClinicalStage(
+                patient=patient,
+                clinical_intervention_completed=patient.clinical_intervention_completed
+            )
+        elif patient.current_cohort == "Initial Transition":
+            stage_instance = InitialTransitionStage(
+                patient=patient,
+                lead_management_ends=patient.lead_management_ends
+            )
+        elif patient.current_cohort == "Final Transition":
+            stage_instance = FinalTransitionStage(
+                patient=patient,
+                follow_up_attempts=patient.follow_up_attempts,
+                final_response_received=patient.final_response_received
+            )
         elif patient.current_cohort == "Closed":
-            ClosedStage.objects.create(patient=patient)
+            stage_instance = ClosedStage(patient=patient)
+
+        # Save the stage instance after setting the patient data
+        if stage_instance:
+            stage_instance.save()
+
+        # Return a success message
+        return Response({"status": "success", "message": "Patient moved to the new stage successfully"})
 
     def get_history(self, request, patient_id):
         try:
@@ -360,4 +401,4 @@ class PatientViewSet(viewsets.ViewSet):
         history_entries = PatientHistory.objects.filter(patient=patient)
         serializer = PatientHistorySerializer(history_entries, many=True)
 
-        return Response({"patient_id": patient.id, "history": serializer.data}, status=status.HTTP_200_OK)  
+        return Response({"patient_id": patient.id, "history": serializer.data}, status=status.HTTP_200_OK)
