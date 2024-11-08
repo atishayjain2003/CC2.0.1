@@ -205,14 +205,13 @@ state_transitions = {
     ]
 }
 class PatientViewSet(viewsets.ViewSet):
-    
+
     def create(self, request):
         serializer = PatientSerializer(data=request.data)
         if serializer.is_valid():
             try:
                 patient = serializer.save()
                 logger.info(f"Patient admitted successfully with ID: {patient.id}")
-                #log being received
                 return Response({"message": "Patient admitted successfully", "patient_id": patient.id}, status=status.HTTP_201_CREATED)
             except Exception as e:
                 logger.error(f"Failed to admit patient: {e}")
@@ -224,7 +223,6 @@ class PatientViewSet(viewsets.ViewSet):
         try:
             patient = Patient.objects.get(id=patient_id)
             logger.info(f"Transition initiated for patient ID: {patient_id}")
-            #log being received
         except Patient.DoesNotExist:
             logger.error(f"Patient with ID {patient_id} not found")
             return Response({"error": "Patient not found"}, status=status.HTTP_404_NOT_FOUND)
@@ -235,6 +233,9 @@ class PatientViewSet(viewsets.ViewSet):
         for transition in state_transitions['state_transitions']:
             if (patient.current_sub_stage == transition['current_sub_stage'] and 
                 patient.current_cohort == transition['current_cohort']):
+                
+                logger.info(f"Evaluating transition for cohort: {patient.current_cohort}, sub-stage: {patient.current_sub_stage}")
+
                 if self._check_conditions(patient, transition['conditions']):
                     patient.previous_cohort = previous_cohort
                     patient.previous_sub_stage = previous_sub_stage
@@ -243,8 +244,7 @@ class PatientViewSet(viewsets.ViewSet):
                     
                     try:
                         patient.save()
-                        logger.info("Patient cohort and sub-stage updated and saved.")
-                        #log being received
+                        logger.info(f"Patient cohort and sub-stage updated to: {patient.current_cohort}, {patient.current_sub_stage}")
                     except Exception as e:
                         logger.error(f"Failed to save patient data: {e}")
                         return Response({"error": "Failed to save patient data"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -258,11 +258,11 @@ class PatientViewSet(viewsets.ViewSet):
                             next_sub_stage=transition['next_sub_cohort'],
                         )
                         logger.info("Transition history saved.")
-                        #log being received
                     except Exception as e:
                         logger.error(f"Failed to save transition history: {e}")
                         return Response({"error": "Failed to save transition history"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+                    logger.info(f"Calling _move_to_stage for patient ID {patient.id} with cohort {patient.current_cohort}")
                     self._move_to_stage(patient)
                     return Response({"message": "Patient transitioned successfully", "patient_id": patient.id}, status=status.HTTP_200_OK)
 
@@ -270,12 +270,16 @@ class PatientViewSet(viewsets.ViewSet):
         return Response({"message": "No transition applied"}, status=status.HTTP_400_BAD_REQUEST)
 
     def _check_conditions(self, patient, conditions):
+        logger.info("Checking conditions for transition.")
         for action in conditions.get('actions', []):
             if not self._evaluate_condition(patient, action):
+                logger.info(f"Action condition not met: {action}")
                 return False
         for disposition in conditions.get('dispositions', []):
             if not self._evaluate_condition(patient, disposition):
+                logger.info(f"Disposition condition not met: {disposition}")
                 return False
+        logger.info("All conditions met for transition.")
         return True
 
     def _evaluate_condition(self, patient, condition):
@@ -296,8 +300,9 @@ class PatientViewSet(viewsets.ViewSet):
         elif operator == "<":
             return patient_value < value
         return patient_value == value
-
+    
     def _move_to_stage(self, patient):
+        logger.info(f"Entered _move_to_stage function for patient ID: {patient.id}.")
         stage_classes = {
             "Follow-up": FollowUpStage,
             "Clinical Intervention": ClinicalInterventionStage,
@@ -313,31 +318,42 @@ class PatientViewSet(viewsets.ViewSet):
 
         try:
             stage_class = stage_classes.get(patient.current_cohort)
-            if stage_class:
-                # Log the current cohort and intended stage
-                logger.info(f"Attempting to move patient ID {patient.id} to stage: {patient.current_cohort}")
+            if not stage_class:
+                logger.error(f"Stage class not found for cohort: {patient.current_cohort}")
+                return Response(
+                    {"error": f"Stage class not found for cohort: {patient.current_cohort}"}, 
+                    status=status.HTTP_400_BAD_REQUEST
+                )
 
-                # Create the stage object and confirm it's saved
-                stage_instance = stage_class.objects.create(patient=patient)
-                logger.info(f"Patient moved to stage: {patient.current_cohort} successfully.")
+            logger.info(f"Attempting to create a new stage for patient ID {patient.id} in cohort {patient.current_cohort}")
+            
+            stage_instance = stage_class.objects.create(patient=patient)
+            
+            # Verification log to confirm instance creation
+            logger.info(f"New stage instance created for patient ID {patient.id} in cohort {patient.current_cohort}")
 
-                # Verify stage creation by querying the latest stage for the patient
-                saved_stage = stage_class.objects.filter(patient=patient).latest('id')
-                if saved_stage != stage_instance:
-                    logger.error(f"Stage creation verification failed for patient ID {patient.id}.")
-                    return Response({"error": "Stage creation verification failed"}, 
-                                    status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            # Double-check stage creation in the database
+            saved_stage = stage_class.objects.filter(patient=patient).latest('id')
+            if saved_stage != stage_instance:
+                logger.error(f"Stage creation verification failed for patient ID {patient.id}.")
+                return Response(
+                    {"error": "Stage creation verification failed"}, 
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                )
 
+            logger.info(f"Patient moved to stage {patient.current_cohort} successfully.")
+        
         except Exception as e:
             logger.error(f"Failed to move patient to stage: {e}")
-            return Response({"error": f"Failed to move patient to stage: {str(e)}"},
-                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response(
+                {"error": f"Failed to move patient to stage: {str(e)}"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
 
     def get_history(self, request, patient_id):
         try:
             patient = Patient.objects.get(id=patient_id)
             logger.info(f"Retrieving history for patient ID: {patient_id}")
-            #log being received
         except Patient.DoesNotExist:
             logger.error(f"Patient with ID {patient_id} not found")
             return Response({"error": "Patient not found"}, status=status.HTTP_404_NOT_FOUND)

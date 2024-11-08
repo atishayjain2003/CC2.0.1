@@ -19,3 +19,87 @@ INFO 2024-11-09 00:48:17,432 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_ma
 INFO 2024-11-09 00:48:17,967 autoreload Watching for file changes with StatReloader
 INFO 2024-11-09 00:48:22,560 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
 INFO 2024-11-09 00:48:23,168 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:07:10,453 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:07:31,182 views Patient admitted successfully with ID: 31
+INFO 2024-11-09 02:07:31,183 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-09 02:07:36,614 views Transition initiated for patient ID: 31
+INFO 2024-11-09 02:07:36,615 views Evaluating transition for cohort: New Recommendations, sub-stage: A1
+INFO 2024-11-09 02:07:36,615 views Checking conditions for transition.
+INFO 2024-11-09 02:07:36,615 views All conditions met for transition.
+INFO 2024-11-09 02:07:36,625 views Patient cohort and sub-stage updated to: A, Follow-up
+INFO 2024-11-09 02:07:36,636 views Transition history saved.
+INFO 2024-11-09 02:07:36,636 views Calling _move_to_stage for patient ID 31 with cohort A
+INFO 2024-11-09 02:07:36,637 views Entered _move_to_stage function for patient ID: 31.
+INFO 2024-11-09 02:07:36,637 basehttp "PUT /api/patients/31/transition/ HTTP/1.1" 200 63
+INFO 2024-11-09 02:07:41,820 views Retrieving history for patient ID: 31
+INFO 2024-11-09 02:07:41,837 basehttp "GET /api/patients/31/history/ HTTP/1.1" 200 213
+INFO 2024-11-09 02:11:16,699 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 02:11:17,228 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:11:22,692 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 02:11:23,221 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:11:52,147 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 02:11:52,793 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:11:54,088 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 02:11:54,573 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:11:56,004 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 02:11:56,537 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:11:57,895 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 02:11:58,465 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:12:01,805 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 02:12:02,302 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:12:07,778 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 02:12:08,296 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:12:09,688 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 02:12:10,240 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:12:12,679 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 02:12:13,339 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:12:14,678 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 02:12:15,210 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:13:34,353 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 02:13:34,839 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:13:51,018 views Patient admitted successfully with ID: 32
+INFO 2024-11-09 02:13:51,019 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-09 02:13:56,574 views Transition initiated for patient ID: 32
+INFO 2024-11-09 02:13:56,574 views Evaluating transition for cohort: New Recommendations, sub-stage: A1
+INFO 2024-11-09 02:13:56,574 views Checking conditions for transition.
+INFO 2024-11-09 02:13:56,575 views All conditions met for transition.
+INFO 2024-11-09 02:13:56,588 views Patient cohort and sub-stage updated to: A, Follow-up
+INFO 2024-11-09 02:13:56,599 views Transition history saved.
+INFO 2024-11-09 02:13:56,600 views Calling _move_to_stage for patient ID 32 with cohort A
+INFO 2024-11-09 02:13:56,600 views Entered _move_to_stage function for patient ID: 32.
+ERROR 2024-11-09 02:13:56,600 views Stage class not found for cohort: A
+INFO 2024-11-09 02:13:56,601 basehttp "PUT /api/patients/32/transition/ HTTP/1.1" 200 63
+INFO 2024-11-09 02:14:02,128 views Retrieving history for patient ID: 32
+INFO 2024-11-09 02:14:02,139 basehttp "GET /api/patients/32/history/ HTTP/1.1" 200 213
+INFO 2024-11-09 02:46:29,539 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 02:46:30,085 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:51:03,736 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-09 02:51:04,381 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:52:02,716 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-09 02:52:03,232 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:52:32,115 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-09 02:52:32,739 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:52:51,235 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-09 02:52:51,866 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:53:01,309 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-09 02:53:01,911 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:55:14,750 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-09 02:55:15,316 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:55:22,656 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-09 02:55:23,210 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:56:29,499 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-09 02:56:29,999 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:56:43,436 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-09 02:56:43,999 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:56:49,350 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-09 02:56:49,827 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:56:55,186 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-09 02:56:55,717 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:57:07,191 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-09 02:57:07,746 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:58:14,621 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-09 02:58:15,150 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:58:17,443 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-09 02:58:17,923 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 02:58:26,251 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-09 02:58:26,804 autoreload Watching for file changes with StatReloader
