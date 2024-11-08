@@ -1,10 +1,6 @@
-from rest_framework import viewsets
-from rest_framework.response import Response
-from rest_framework import status
-from .models import Patient, PatientHistory
-from .serializers import PatientSerializer, PatientHistorySerializer
 from rest_framework import viewsets, status
 from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
 from .models import (
     Patient, PatientHistory, NewRecommendationsStage, FollowUpStage,
     ClinicalInterventionStage, QuotationPhaseStage, ReadyToScheduleStage,
@@ -12,11 +8,9 @@ from .models import (
     InitialTransitionStage, FinalTransitionStage, ClosedStage
 )
 from .serializers import PatientSerializer, PatientHistorySerializer
-from rest_framework import viewsets, status
-from rest_framework.response import Response
-from .models import Patient, PatientHistory, FollowUpStage, ClinicalInterventionStage, QuotationPhaseStage, ReadyToScheduleStage, PreAdmissionPrepStage, PostponedAdmissionsStage, ClinicalStage, InitialTransitionStage, FinalTransitionStage, ClosedStage
-from .serializers import PatientSerializer, PatientHistorySerializer
-from django.shortcuts import get_object_or_404
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Load the state transition JSON structure
 state_transitions = {
@@ -211,93 +205,88 @@ state_transitions = {
     ]
 }
 class PatientViewSet(viewsets.ViewSet):
-
+    
     def create(self, request):
         serializer = PatientSerializer(data=request.data)
         if serializer.is_valid():
-            patient = serializer.save()
-            return Response({"message": "Patient admitted successfully", "patient_id": patient.id}, status=status.HTTP_201_CREATED)
+            try:
+                patient = serializer.save()
+                logger.info(f"Patient admitted successfully with ID: {patient.id}")
+                #log being received
+                return Response({"message": "Patient admitted successfully", "patient_id": patient.id}, status=status.HTTP_201_CREATED)
+            except Exception as e:
+                logger.error(f"Failed to admit patient: {e}")
+                return Response({"error": "Failed to admit patient"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        logger.warning(f"Patient admission failed with errors: {serializer.errors}")
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def transition(self, request, patient_id):
-        """
-        Triggers a state transition for the patient based on conditions and moves data to the appropriate stage table.
-        """
         try:
             patient = Patient.objects.get(id=patient_id)
+            logger.info(f"Transition initiated for patient ID: {patient_id}")
+            #log being received
         except Patient.DoesNotExist:
+            logger.error(f"Patient with ID {patient_id} not found")
             return Response({"error": "Patient not found"}, status=status.HTTP_404_NOT_FOUND)
 
         previous_cohort = patient.current_cohort
         previous_sub_stage = patient.current_sub_stage
 
-        # Iterate over state transitions and apply conditions
         for transition in state_transitions['state_transitions']:
             if (patient.current_sub_stage == transition['current_sub_stage'] and 
                 patient.current_cohort == transition['current_cohort']):
-
-                conditions_met = self._check_conditions(patient, transition['conditions'])
-
-                if conditions_met:
-                    # Update patient's cohort and sub-stage
+                if self._check_conditions(patient, transition['conditions']):
                     patient.previous_cohort = previous_cohort
                     patient.previous_sub_stage = previous_sub_stage
                     patient.current_cohort = transition['next_cohort']
                     patient.current_sub_stage = transition['next_sub_cohort']
+                    
+                    try:
+                        patient.save()
+                        logger.info("Patient cohort and sub-stage updated and saved.")
+                        #log being received
+                    except Exception as e:
+                        logger.error(f"Failed to save patient data: {e}")
+                        return Response({"error": "Failed to save patient data"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-                    # Save the patient and log the history
-                    patient.save()
-                    PatientHistory.objects.create(
-                        patient=patient,
-                        previous_cohort=previous_cohort,
-                        previous_sub_stage=previous_sub_stage,
-                        next_cohort=transition['next_cohort'],
-                        next_sub_stage=transition['next_sub_cohort'],
-                    )
+                    try:
+                        PatientHistory.objects.create(
+                            patient=patient,
+                            previous_cohort=previous_cohort,
+                            previous_sub_stage=previous_sub_stage,
+                            next_cohort=transition['next_cohort'],
+                            next_sub_stage=transition['next_sub_cohort'],
+                        )
+                        logger.info("Transition history saved.")
+                        #log being received
+                    except Exception as e:
+                        logger.error(f"Failed to save transition history: {e}")
+                        return Response({"error": "Failed to save transition history"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-                    # Move to the appropriate stage
                     self._move_to_stage(patient)
-
                     return Response({"message": "Patient transitioned successfully", "patient_id": patient.id}, status=status.HTTP_200_OK)
 
+        logger.warning("No transition applied.")
         return Response({"message": "No transition applied"}, status=status.HTTP_400_BAD_REQUEST)
 
     def _check_conditions(self, patient, conditions):
-        """
-        Checks if the conditions are met for the state transition.
-        """
-        conditions_met = True
-
-        # Check actions (e.g., "days_since_follow_up >= 1")
         for action in conditions.get('actions', []):
             if not self._evaluate_condition(patient, action):
-                conditions_met = False
-                break
-
-        # Check dispositions (e.g., "clinical_intervention_required == True")
+                return False
         for disposition in conditions.get('dispositions', []):
             if not self._evaluate_condition(patient, disposition):
-                conditions_met = False
-                break
-
-        return conditions_met
+                return False
+        return True
 
     def _evaluate_condition(self, patient, condition):
-        """
-        Evaluates a single condition for the patient.
-        """
         patient_value = getattr(patient, condition['condition'], None)
         if patient_value is None:
+            logger.warning(f"Condition {condition['condition']} not found on patient.")
             return False
 
-        # Convert value to integer if it's a digit-based condition
+        operator = condition.get('operator')
         value = condition['value']
-        if isinstance(value, str) and value.isdigit():
-            value = int(value)
 
-        operator = condition.get('operator', None)
-
-        # Handle comparisons based on the operator
         if operator == ">=":
             return patient_value >= value
         elif operator == ">":
@@ -306,99 +295,53 @@ class PatientViewSet(viewsets.ViewSet):
             return patient_value <= value
         elif operator == "<":
             return patient_value < value
-        elif operator is None:
-            return patient_value == value
-
-        return False
+        return patient_value == value
 
     def _move_to_stage(self, patient):
-        """
-        Moves patient data to the appropriate stage table and clears data from other stages.
-        """
-        # Save the patient data before moving to a new stage (ensure it's up-to-date)
-        patient.save()
+        stage_classes = {
+            "Follow-up": FollowUpStage,
+            "Clinical Intervention": ClinicalInterventionStage,
+            "Quotation Phase": QuotationPhaseStage,
+            "Ready to Schedule": ReadyToScheduleStage,
+            "Pre-Admission Prep": PreAdmissionPrepStage,
+            "Postponed Admissions": PostponedAdmissionsStage,
+            "Clinical Stage": ClinicalStage,
+            "Initial Transition": InitialTransitionStage,
+            "Final Transition": FinalTransitionStage,
+            "Closed": ClosedStage
+        }
 
-        # Clear patient data from all stage tables first
-        stage_models = [
-            FollowUpStage, ClinicalInterventionStage, QuotationPhaseStage,
-            ReadyToScheduleStage, PreAdmissionPrepStage, PostponedAdmissionsStage,
-            ClinicalStage, InitialTransitionStage, FinalTransitionStage, ClosedStage
-        ]
-        for stage_model in stage_models:
-            stage_model.objects.filter(patient=patient).delete()
+        try:
+            stage_class = stage_classes.get(patient.current_cohort)
+            if stage_class:
+                # Log the current cohort and intended stage
+                logger.info(f"Attempting to move patient ID {patient.id} to stage: {patient.current_cohort}")
 
-        # Move data to the appropriate table based on the new cohort and sub-stage
-        stage_instance = None
-        if patient.current_cohort == "Follow-up":
-            stage_instance = FollowUpStage(
-                patient=patient,
-                days_since_follow_up=patient.days_since_follow_up,
-                clinical_intervention_completed=patient.clinical_intervention_completed,
-                quotation_phase_required=patient.quotation_phase_required
-            )
-        elif patient.current_cohort == "Clinical Intervention":
-            stage_instance = ClinicalInterventionStage(
-                patient=patient,
-                clinical_intervention_completed=patient.clinical_intervention_completed,
-                quotation_accepted=patient.quotation_accepted
-            )
-        elif patient.current_cohort == "Quotation Phase":
-            stage_instance = QuotationPhaseStage(
-                patient=patient,
-                quotation_accepted=patient.quotation_accepted,
-                days_since_last_contact=patient.days_since_last_contact
-            )
-        elif patient.current_cohort == "Ready to Schedule":
-            stage_instance = ReadyToScheduleStage(
-                patient=patient,
-                scheduled_admission=patient.scheduled_admission
-            )
-        elif patient.current_cohort == "Pre-Admission Prep":
-            stage_instance = PreAdmissionPrepStage(
-                patient=patient,
-                days_until_admission=patient.days_until_admission,
-                admission_status=patient.admission_status
-            )
-        elif patient.current_cohort == "Postponed Admissions":
-            stage_instance = PostponedAdmissionsStage(
-                patient=patient,
-                scheduled_date_in_past=patient.scheduled_date_in_past,
-                admission_completed=patient.admission_completed
-            )
-        elif patient.current_cohort == "Clinical Stage":
-            stage_instance = ClinicalStage(
-                patient=patient,
-                clinical_intervention_completed=patient.clinical_intervention_completed
-            )
-        elif patient.current_cohort == "Initial Transition":
-            stage_instance = InitialTransitionStage(
-                patient=patient,
-                lead_management_ends=patient.lead_management_ends
-            )
-        elif patient.current_cohort == "Final Transition":
-            stage_instance = FinalTransitionStage(
-                patient=patient,
-                follow_up_attempts=patient.follow_up_attempts,
-                final_response_received=patient.final_response_received
-            )
-        elif patient.current_cohort == "Closed":
-            stage_instance = ClosedStage(patient=patient)
+                # Create the stage object and confirm it's saved
+                stage_instance = stage_class.objects.create(patient=patient)
+                logger.info(f"Patient moved to stage: {patient.current_cohort} successfully.")
 
-        # Save the stage instance after setting the patient data
-        if stage_instance:
-            stage_instance.save()
+                # Verify stage creation by querying the latest stage for the patient
+                saved_stage = stage_class.objects.filter(patient=patient).latest('id')
+                if saved_stage != stage_instance:
+                    logger.error(f"Stage creation verification failed for patient ID {patient.id}.")
+                    return Response({"error": "Stage creation verification failed"}, 
+                                    status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        # Return a success message
-        return Response({"status": "success", "message": "Patient moved to the new stage successfully"})
+        except Exception as e:
+            logger.error(f"Failed to move patient to stage: {e}")
+            return Response({"error": f"Failed to move patient to stage: {str(e)}"},
+                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def get_history(self, request, patient_id):
         try:
             patient = Patient.objects.get(id=patient_id)
+            logger.info(f"Retrieving history for patient ID: {patient_id}")
+            #log being received
         except Patient.DoesNotExist:
+            logger.error(f"Patient with ID {patient_id} not found")
             return Response({"error": "Patient not found"}, status=status.HTTP_404_NOT_FOUND)
 
-        # Retrieve the patient's history
         history_entries = PatientHistory.objects.filter(patient=patient)
         serializer = PatientHistorySerializer(history_entries, many=True)
-
         return Response({"patient_id": patient.id, "history": serializer.data}, status=status.HTTP_200_OK)

@@ -1,0 +1,21 @@
+INFO 2024-11-09 00:44:29,957 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 00:44:32,768 views Patient admitted successfully with ID: 30
+INFO 2024-11-09 00:44:32,771 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-09 00:44:40,421 views Transition initiated for patient ID: 30
+INFO 2024-11-09 00:44:40,434 views Patient cohort and sub-stage updated and saved.
+INFO 2024-11-09 00:44:40,448 views Transition history saved.
+INFO 2024-11-09 00:44:40,449 basehttp "PUT /api/patients/30/transition/ HTTP/1.1" 200 63
+INFO 2024-11-09 00:44:46,259 views Retrieving history for patient ID: 30
+INFO 2024-11-09 00:44:46,276 basehttp "GET /api/patients/30/history/ HTTP/1.1" 200 213
+INFO 2024-11-09 00:46:20,928 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 00:46:21,418 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 00:46:40,466 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 00:46:41,006 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 00:47:23,886 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 00:47:24,410 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 00:48:12,421 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 00:48:12,941 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 00:48:17,432 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 00:48:17,967 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 00:48:22,560 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-09 00:48:23,168 autoreload Watching for file changes with StatReloader
