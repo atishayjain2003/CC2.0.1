@@ -7,3 +7,8 @@ What is Happening for understanding?
 What needs to be done?
 1. Create database for different substages such that patient data lies in databases of substages
 2. Make sure transition of patient can be verified
+
+New changes ?
+1. Suppose we have a patient data , according to json structure it should now be moved to Follow UP stage in cohort A.
+2. Routing for that is fixed. The patient is getting saved in Follow UP stage.
+3. We now need to define it for every other bucket and it will be done
