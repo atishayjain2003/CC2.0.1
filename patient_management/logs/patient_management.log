@@ -103,3 +103,482 @@ INFO 2024-11-09 02:58:17,443 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_ma
 INFO 2024-11-09 02:58:17,923 autoreload Watching for file changes with StatReloader
 INFO 2024-11-09 02:58:26,251 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
 INFO 2024-11-09 02:58:26,804 autoreload Watching for file changes with StatReloader
+INFO 2024-11-09 23:57:33,648 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:02:22,758 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:03:27,818 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:03:28,399 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:03:32,769 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:03:33,318 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:15:45,123 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:16:13,243 views Patient admitted successfully with ID: 33
+INFO 2024-11-10 00:16:13,245 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-10 00:16:20,091 views Transition initiated for patient ID: 33
+INFO 2024-11-10 00:16:20,091 views Evaluating transition for cohort: New Recommendations, sub-stage: A1
+INFO 2024-11-10 00:16:20,092 views Checking conditions for transition.
+INFO 2024-11-10 00:16:20,092 views All conditions met for transition.
+INFO 2024-11-10 00:16:20,103 views Patient cohort and sub-stage updated to: A, Follow-up
+INFO 2024-11-10 00:16:20,115 views Transition history saved.
+INFO 2024-11-10 00:16:20,116 views Calling _move_to_stage for patient ID 33 with cohort A
+INFO 2024-11-10 00:16:20,116 views Entered _move_to_stage function for patient ID: 33.
+ERROR 2024-11-10 00:16:20,116 views Stage class not found for cohort: A
+INFO 2024-11-10 00:16:20,117 basehttp "PUT /api/patients/33/transition/ HTTP/1.1" 200 63
+INFO 2024-11-10 00:16:26,454 views Retrieving history for patient ID: 33
+INFO 2024-11-10 00:16:26,483 basehttp "GET /api/patients/33/history/ HTTP/1.1" 200 213
+INFO 2024-11-10 00:21:40,996 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:21:41,542 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:25:42,805 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:26:06,829 views Patient admitted successfully with ID: 34
+INFO 2024-11-10 00:26:06,830 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-10 00:26:13,416 views Transition initiated for patient ID: 34
+INFO 2024-11-10 00:26:13,417 views Evaluating transition for cohort: New Recommendations, sub-stage: A1
+INFO 2024-11-10 00:26:13,417 views Checking conditions for transition.
+INFO 2024-11-10 00:26:13,418 views All conditions met for transition.
+INFO 2024-11-10 00:26:13,429 views Patient cohort and sub-stage updated to: A, Follow-up
+INFO 2024-11-10 00:26:13,441 views Transition history saved.
+INFO 2024-11-10 00:26:13,441 views Calling _move_to_stage for patient ID 34 with cohort A
+INFO 2024-11-10 00:26:13,442 views Entered _move_to_stage function for patient ID: 34.
+ERROR 2024-11-10 00:26:13,442 views Stage class not found for cohort: A
+INFO 2024-11-10 00:26:13,443 basehttp "PUT /api/patients/34/transition/ HTTP/1.1" 200 63
+INFO 2024-11-10 00:26:19,073 views Retrieving history for patient ID: 34
+INFO 2024-11-10 00:26:19,093 basehttp "GET /api/patients/34/history/ HTTP/1.1" 200 213
+INFO 2024-11-10 00:26:43,791 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:26:44,419 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:26:45,648 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:26:46,179 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:26:56,679 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:26:57,208 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:27:08,735 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:27:09,271 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:27:20,790 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:27:21,393 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:27:29,928 views Patient admitted successfully with ID: 35
+INFO 2024-11-10 00:27:29,930 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-10 00:27:35,949 views Transition initiated for patient ID: 35
+INFO 2024-11-10 00:27:35,950 views Evaluating transition for cohort: New Recommendations, sub-stage: A1
+INFO 2024-11-10 00:27:35,950 views Checking conditions for transition.
+INFO 2024-11-10 00:27:35,950 views All conditions met for transition.
+INFO 2024-11-10 00:27:35,961 views Patient cohort and sub-stage updated to: A, Follow-up
+INFO 2024-11-10 00:27:35,970 views Transition history saved.
+INFO 2024-11-10 00:27:35,970 views Calling _move_to_stage for patient ID 35 with cohort A
+INFO 2024-11-10 00:27:35,972 views Entered _move_to_stage function for patient ID: 35.
+ERROR 2024-11-10 00:27:35,972 views Stage class not found for cohort: A
+INFO 2024-11-10 00:27:35,973 basehttp "PUT /api/patients/35/transition/ HTTP/1.1" 200 63
+INFO 2024-11-10 00:27:40,889 views Retrieving history for patient ID: 35
+INFO 2024-11-10 00:27:40,900 basehttp "GET /api/patients/35/history/ HTTP/1.1" 200 213
+WARNING 2024-11-10 00:28:02,584 basehttp "GET / HTTP/1.1" 404 2316
+WARNING 2024-11-10 00:28:02,648 basehttp "GET /favicon.ico HTTP/1.1" 404 2367
+INFO 2024-11-10 00:28:04,948 basehttp "GET /admin/ HTTP/1.1" 200 18367
+INFO 2024-11-10 00:28:05,034 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2804
+INFO 2024-11-10 00:28:05,036 basehttp "GET /static/admin/css/base.css HTTP/1.1" 200 22092
+INFO 2024-11-10 00:28:05,039 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2024-11-10 00:28:05,040 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2024-11-10 00:28:05,042 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 200 17972
+INFO 2024-11-10 00:28:05,051 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2024-11-10 00:28:05,061 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2024-11-10 00:28:05,088 basehttp "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2024-11-10 00:28:05,089 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2024-11-10 00:28:05,089 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2024-11-10 00:28:29,604 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\admin.py changed, reloading.
+INFO 2024-11-10 00:28:30,266 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:29:22,485 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:29:23,173 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:29:24,517 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:29:25,115 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:29:33,314 views Patient admitted successfully with ID: 36
+INFO 2024-11-10 00:29:33,316 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-10 00:29:38,827 views Transition initiated for patient ID: 36
+INFO 2024-11-10 00:29:38,828 views Evaluating transition for cohort: New Recommendations, sub-stage: A1
+INFO 2024-11-10 00:29:38,828 views Checking conditions for transition.
+INFO 2024-11-10 00:29:38,828 views All conditions met for transition.
+INFO 2024-11-10 00:29:38,840 views Patient cohort and sub-stage updated to: A, Follow-up
+INFO 2024-11-10 00:29:38,857 views Transition history saved.
+INFO 2024-11-10 00:29:38,858 views Calling _move_to_stage for patient ID 36 with cohort A
+INFO 2024-11-10 00:29:38,858 views Entered _move_to_stage function for patient ID: 36.
+INFO 2024-11-10 00:29:38,858 views Attempting to create a new stage for patient ID 36 in cohort A
+ERROR 2024-11-10 00:29:38,858 views Failed to move patient to stage: type object 'CohortAStage' has no attribute 'objects'
+INFO 2024-11-10 00:29:38,859 basehttp "PUT /api/patients/36/transition/ HTTP/1.1" 200 63
+INFO 2024-11-10 00:29:44,343 views Retrieving history for patient ID: 36
+INFO 2024-11-10 00:29:44,358 basehttp "GET /api/patients/36/history/ HTTP/1.1" 200 213
+INFO 2024-11-10 00:34:10,812 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:34:11,427 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:34:25,140 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:34:25,768 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:34:27,112 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:34:27,728 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:35:16,592 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:35:17,166 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:35:21,445 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:35:21,976 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:35:45,510 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:35:46,109 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:35:50,634 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:35:51,275 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:35:52,617 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:35:53,223 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:35:54,439 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:35:54,983 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:35:57,211 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:35:57,820 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:36:00,065 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:36:00,642 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:36:06,160 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:36:06,733 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:36:10,003 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:36:10,634 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:36:38,345 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:36:39,041 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:36:43,490 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:36:44,155 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:36:58,976 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:36:59,494 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:37:07,901 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:37:08,475 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:37:16,019 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:37:16,526 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:38:09,818 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:38:10,507 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:38:18,040 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:38:18,619 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:38:20,855 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:38:21,434 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:38:23,825 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:38:24,516 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:38:26,755 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:38:27,245 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:38:33,759 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:38:34,284 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:38:37,753 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:38:38,286 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:38:43,875 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:38:44,432 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:38:45,804 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:38:46,385 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:38:57,918 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:38:58,519 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:39:02,827 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:39:03,401 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:39:05,629 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:39:06,137 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:39:10,544 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:39:11,049 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:39:16,398 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:39:16,928 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:39:27,419 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py changed, reloading.
+INFO 2024-11-10 00:39:27,971 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:39:50,629 views Patient admitted successfully with ID: 37
+INFO 2024-11-10 00:39:50,630 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-10 00:39:56,209 views Transition initiated for patient ID: 37
+INFO 2024-11-10 00:39:56,209 views Evaluating transition for cohort: New Recommendations, sub-stage: A1
+INFO 2024-11-10 00:39:56,209 views Checking conditions for transition.
+INFO 2024-11-10 00:39:56,209 views All conditions met for transition.
+INFO 2024-11-10 00:39:56,221 views Patient cohort and sub-stage updated to: A, Follow-up
+INFO 2024-11-10 00:39:56,232 views Transition history saved.
+INFO 2024-11-10 00:39:56,232 views Calling _move_to_stage for patient ID 37 with cohort A
+INFO 2024-11-10 00:39:56,232 views Entered _move_to_stage function for patient ID: 37.
+INFO 2024-11-10 00:39:56,233 views Attempting to create a new stage for patient ID 37 in cohort A
+INFO 2024-11-10 00:39:56,244 views New stage instance created for patient ID 37 in cohort A
+INFO 2024-11-10 00:39:56,246 views Patient moved to stage A successfully.
+INFO 2024-11-10 00:39:56,247 basehttp "PUT /api/patients/37/transition/ HTTP/1.1" 200 63
+INFO 2024-11-10 00:40:02,095 views Retrieving history for patient ID: 37
+INFO 2024-11-10 00:40:02,107 basehttp "GET /api/patients/37/history/ HTTP/1.1" 200 213
+WARNING 2024-11-10 00:40:22,238 basehttp "GET / HTTP/1.1" 404 2316
+INFO 2024-11-10 00:40:26,283 basehttp "GET /admin/ HTTP/1.1" 200 18367
+INFO 2024-11-10 00:40:28,571 basehttp "GET /admin/patients/newrecommendationsstage/ HTTP/1.1" 200 14007
+INFO 2024-11-10 00:40:28,628 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-10 00:40:28,743 basehttp "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2024-11-10 00:40:28,767 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2024-11-10 00:40:28,775 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2024-11-10 00:40:28,796 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2024-11-10 00:40:28,799 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9097
+INFO 2024-11-10 00:40:28,805 basehttp "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2024-11-10 00:40:28,807 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2024-11-10 00:40:28,844 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2024-11-10 00:40:28,868 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2024-11-10 00:40:28,898 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2024-11-10 00:40:28,921 basehttp "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2024-11-10 00:40:31,475 basehttp "GET /admin/patients/followupstage/ HTTP/1.1" 200 15275
+INFO 2024-11-10 00:40:31,495 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-10 00:40:34,931 basehttp "GET /admin/patients/followupstage/2/change/ HTTP/1.1" 200 19875
+INFO 2024-11-10 00:40:34,948 basehttp "GET /static/admin/css/forms.css HTTP/1.1" 200 8794
+INFO 2024-11-10 00:40:34,952 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-10 00:40:34,955 basehttp "GET /static/admin/css/widgets.css HTTP/1.1" 200 11564
+INFO 2024-11-10 00:40:34,961 basehttp "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2024-11-10 00:40:34,967 basehttp "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2024-11-10 00:40:34,977 basehttp "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2024-11-10 00:45:45,250 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:45:45,970 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:47:48,232 autoreload Watching for file changes with StatReloader
+ERROR 2024-11-10 00:47:48,775 log Internal Server Error: /admin/patients/followupstage/2/change/
+Traceback (most recent call last):
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\options.py", line 1964, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\options.py", line 1820, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\options.py", line 1930, in _changeform_view
+    "subtitle": str(obj) if obj else None,
+                ^^^^^^^^
+TypeError: __str__ returned non-string (type Patient)
+ERROR 2024-11-10 00:47:48,781 basehttp "GET /admin/patients/followupstage/2/change/ HTTP/1.1" 500 124523
+INFO 2024-11-10 00:47:57,947 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:47:58,652 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:48:00,021 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:48:00,665 autoreload Watching for file changes with StatReloader
+WARNING 2024-11-10 00:48:02,250 basehttp "GET / HTTP/1.1" 404 2316
+INFO 2024-11-10 00:48:07,117 basehttp "GET /admin/ HTTP/1.1" 200 18367
+ERROR 2024-11-10 00:48:10,609 log Internal Server Error: /admin/patients/followupstage/
+Traceback (most recent call last):
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\db\models\options.py", line 676, in get_field
+    return self.fields_map[field_name]
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'action_checkbox'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\utils.py", line 290, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\utils.py", line 330, in _get_non_gfk_field
+    field = opts.get_field(name)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\db\models\options.py", line 678, in get_field
+    raise FieldDoesNotExist(
+django.core.exceptions.FieldDoesNotExist: FollowUpStage has no field named 'action_checkbox'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\templatetags\base.py", line 45, in render
+    return super().render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\template\library.py", line 258, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\templatetags\admin_list.py", line 346, in result_list
+    "results": list(results(cl)),
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\templatetags\admin_list.py", line 322, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\templatetags\admin_list.py", line 313, in __init__
+    super().__init__(*items)
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\templatetags\admin_list.py", line 218, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\utils.py", line 299, in lookup_field
+    value = attr(obj)
+            ^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\options.py", line 1030, in action_checkbox
+    _("Select this object for an action - {}"), str(obj)
+                                                ^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py", line 75, in __str__
+    return self.name
+           ^^^^^^^^^
+AttributeError: 'FollowUpStage' object has no attribute 'name'
+ERROR 2024-11-10 00:48:10,623 basehttp "GET /admin/patients/followupstage/ HTTP/1.1" 500 446282
+INFO 2024-11-10 00:48:15,293 basehttp "GET /admin/ HTTP/1.1" 200 18367
+INFO 2024-11-10 00:48:21,337 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:48:22,050 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:48:27,615 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:48:28,177 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:48:29,187 basehttp "GET /admin/ HTTP/1.1" 200 18367
+INFO 2024-11-10 00:48:32,013 basehttp "GET /admin/patients/followupstage/ HTTP/1.1" 200 15275
+INFO 2024-11-10 00:48:32,039 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-10 00:48:34,562 basehttp "GET /admin/patients/followupstage/2/change/ HTTP/1.1" 200 19188
+INFO 2024-11-10 00:48:34,583 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-10 00:48:48,497 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:48:49,181 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:48:53,462 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:48:54,048 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:48:55,387 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:48:56,033 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:48:59,441 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:49:00,032 autoreload Watching for file changes with StatReloader
+ERROR 2024-11-10 00:49:00,809 log Internal Server Error: /admin/patients/followupstage/2/change/
+Traceback (most recent call last):
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\options.py", line 1964, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\options.py", line 1820, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\contrib\admin\options.py", line 1930, in _changeform_view
+    "subtitle": str(obj) if obj else None,
+                ^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py", line 75, in __str__
+    return self.Patient
+           ^^^^^^^^^^^^
+AttributeError: 'FollowUpStage' object has no attribute 'Patient'
+ERROR 2024-11-10 00:49:00,815 basehttp "GET /admin/patients/followupstage/2/change/ HTTP/1.1" 500 128437
+INFO 2024-11-10 00:49:06,594 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:49:07,269 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:49:14,834 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:49:15,431 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:49:15,856 basehttp "GET /admin/patients/followupstage/2/change/ HTTP/1.1" 200 19188
+INFO 2024-11-10 00:49:15,879 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-10 00:50:00,498 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:50:01,216 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:50:04,723 basehttp "GET /admin/patients/followupstage/2/change/ HTTP/1.1" 200 19218
+INFO 2024-11-10 00:50:04,747 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-10 00:50:09,943 basehttp "GET /admin/patients/followupstage/ HTTP/1.1" 200 15295
+INFO 2024-11-10 00:50:09,966 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-10 00:50:16,125 basehttp "GET /admin/patients/followupstage/ HTTP/1.1" 200 15295
+INFO 2024-11-10 00:50:16,143 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-10 00:50:16,227 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:50:16,772 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:50:25,114 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:50:25,700 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:50:27,895 basehttp "GET /admin/patients/followupstage/ HTTP/1.1" 200 15295
+INFO 2024-11-10 00:50:27,936 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-10 00:50:28,238 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-10 00:50:28,812 autoreload Watching for file changes with StatReloader
+INFO 2024-11-10 00:50:29,424 basehttp "GET /admin/patients/followupstage/ HTTP/1.1" 200 15259
+INFO 2024-11-10 00:50:29,445 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-10 00:50:32,974 basehttp "GET /admin/patients/followupstage/2/change/ HTTP/1.1" 200 19164
+INFO 2024-11-10 00:50:32,993 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342

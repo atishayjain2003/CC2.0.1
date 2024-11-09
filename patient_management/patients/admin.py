@@ -13,6 +13,7 @@ from .models import (
     InitialTransitionStage, 
     FinalTransitionStage, 
     ClosedStage,
+    CohortAStage
     #PatientStage
 )
 
@@ -30,4 +31,5 @@ admin.site.register(ClinicalStage)
 admin.site.register(InitialTransitionStage)
 admin.site.register(FinalTransitionStage)
 admin.site.register(ClosedStage)
+#admin.site.register(CohortAStage)
 #admin.site.register(PatientStage)

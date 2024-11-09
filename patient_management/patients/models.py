@@ -52,18 +52,27 @@ class PatientStage(models.Model):
         abstract = True
 
 # Models for each cohort and substage with specific fields
+class CohortAStage(PatientStage):
+    # Cohort A-specific fields, if any common field across stages
+    #cohort_a_specific_field = models.CharField(max_length=100, null=True, blank=True)  # Example
 
-class NewRecommendationsStage(PatientStage):
+    class Meta:
+        abstract = True  # Make this model abstract as it's for subclassing
+
+class NewRecommendationsStage(CohortAStage):
     days_since_follow_up = models.IntegerField(default=0)
     clinical_intervention_required = models.BooleanField(default=False)
     quotation_phase_required = models.BooleanField(default=False)
     patient_ready = models.BooleanField(default=False)
 
 
-class FollowUpStage(PatientStage):
+class FollowUpStage(CohortAStage):
     days_since_follow_up = models.IntegerField(default=0)
     clinical_intervention_completed = models.BooleanField(default=False)
     quotation_phase_required = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.patient.name}"
 
 
 class ClinicalInterventionStage(PatientStage):

@@ -5,7 +5,7 @@ from .models import (
     Patient, PatientHistory, NewRecommendationsStage, FollowUpStage,
     ClinicalInterventionStage, QuotationPhaseStage, ReadyToScheduleStage,
     PreAdmissionPrepStage, PostponedAdmissionsStage, ClinicalStage,
-    InitialTransitionStage, FinalTransitionStage, ClosedStage
+    InitialTransitionStage, FinalTransitionStage, ClosedStage,CohortAStage
 )
 from .serializers import PatientSerializer, PatientHistorySerializer
 import logging
@@ -303,32 +303,52 @@ class PatientViewSet(viewsets.ViewSet):
     
     def _move_to_stage(self, patient):
         logger.info(f"Entered _move_to_stage function for patient ID: {patient.id}.")
+    
+    # Mapping cohorts to specific stages/substages
         stage_classes = {
             "Follow-up": FollowUpStage,
             "Clinical Intervention": ClinicalInterventionStage,
             "Quotation Phase": QuotationPhaseStage,
-            "Ready to Schedule": ReadyToScheduleStage,
-            "Pre-Admission Prep": PreAdmissionPrepStage,
+                "Ready to Schedule": ReadyToScheduleStage,
+                "Pre-Admission Prep": PreAdmissionPrepStage,
             "Postponed Admissions": PostponedAdmissionsStage,
             "Clinical Stage": ClinicalStage,
             "Initial Transition": InitialTransitionStage,
             "Final Transition": FinalTransitionStage,
-            "Closed": ClosedStage
+            "Closed": ClosedStage,
+            "A": CohortAStage  # Special case for Cohort A
         }
 
         try:
-            stage_class = stage_classes.get(patient.current_cohort)
+            # Check if the patient belongs to Cohort A
+            if patient.current_cohort == "A":
+                # Decide which sub-stage to assign based on the patient's current sub-stage
+                if patient.current_sub_stage == "New Recommendations":
+                    stage_class = NewRecommendationsStage
+                elif patient.current_sub_stage == "Follow-up":
+                    stage_class = FollowUpStage
+                else:
+                    logger.error(f"Invalid sub-stage for Cohort A: {patient.current_sub_stage}")
+                    return Response(
+                        {"error": f"Invalid sub-stage for Cohort A: {patient.current_sub_stage}"},
+                        status=status.HTTP_400_BAD_REQUEST
+                    )
+            else:
+                # For other cohorts, fetch the stage class from the dictionary
+                stage_class = stage_classes.get(patient.current_cohort)
+            
             if not stage_class:
                 logger.error(f"Stage class not found for cohort: {patient.current_cohort}")
                 return Response(
-                    {"error": f"Stage class not found for cohort: {patient.current_cohort}"}, 
+                    {"error": f"Stage class not found for cohort: {patient.current_cohort}"},
                     status=status.HTTP_400_BAD_REQUEST
                 )
 
             logger.info(f"Attempting to create a new stage for patient ID {patient.id} in cohort {patient.current_cohort}")
             
+            # Create the stage instance using the selected subclass
             stage_instance = stage_class.objects.create(patient=patient)
-            
+
             # Verification log to confirm instance creation
             logger.info(f"New stage instance created for patient ID {patient.id} in cohort {patient.current_cohort}")
 
@@ -337,18 +357,19 @@ class PatientViewSet(viewsets.ViewSet):
             if saved_stage != stage_instance:
                 logger.error(f"Stage creation verification failed for patient ID {patient.id}.")
                 return Response(
-                    {"error": "Stage creation verification failed"}, 
+                    {"error": "Stage creation verification failed"},
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR
                 )
 
             logger.info(f"Patient moved to stage {patient.current_cohort} successfully.")
-        
+
         except Exception as e:
             logger.error(f"Failed to move patient to stage: {e}")
             return Response(
                 {"error": f"Failed to move patient to stage: {str(e)}"},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
+
 
     def get_history(self, request, patient_id):
         try:
