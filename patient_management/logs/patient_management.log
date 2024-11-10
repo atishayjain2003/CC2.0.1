@@ -582,3 +582,50 @@ INFO 2024-11-10 00:50:29,424 basehttp "GET /admin/patients/followupstage/ HTTP/1
 INFO 2024-11-10 00:50:29,445 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
 INFO 2024-11-10 00:50:32,974 basehttp "GET /admin/patients/followupstage/2/change/ HTTP/1.1" 200 19164
 INFO 2024-11-10 00:50:32,993 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-11 00:02:19,539 autoreload Watching for file changes with StatReloader
+INFO 2024-11-11 00:02:51,575 views Patient admitted successfully with ID: 38
+INFO 2024-11-11 00:02:51,575 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+WARNING 2024-11-11 00:02:57,890 basehttp "GET / HTTP/1.1" 404 2316
+WARNING 2024-11-11 00:02:58,032 basehttp "GET /favicon.ico HTTP/1.1" 404 2367
+INFO 2024-11-11 00:03:01,119 basehttp "GET /admin/ HTTP/1.1" 200 18367
+INFO 2024-11-11 00:03:01,143 basehttp "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:01,145 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:01,145 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:01,186 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:01,186 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:01,186 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:01,201 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:01,221 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:01,221 basehttp "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:01,222 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:04,146 basehttp "GET /admin/patients/newrecommendationsstage/ HTTP/1.1" 200 14007
+INFO 2024-11-11 00:03:04,177 basehttp "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:04,185 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:04,185 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:04,185 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:04,197 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:04,198 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:04,198 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:04,198 basehttp "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:04,198 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:04,214 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:04,223 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-11 00:03:04,260 basehttp "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+INFO 2024-11-11 00:03:14,350 basehttp "GET /admin/patients/followupstage/ HTTP/1.1" 200 15259
+INFO 2024-11-11 00:03:14,379 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-11 00:03:39,961 views Transition initiated for patient ID: 38
+INFO 2024-11-11 00:03:39,961 views Evaluating transition for cohort: New Recommendations, sub-stage: A1
+INFO 2024-11-11 00:03:39,961 views Checking conditions for transition.
+INFO 2024-11-11 00:03:39,965 views All conditions met for transition.
+INFO 2024-11-11 00:03:39,979 views Patient cohort and sub-stage updated to: A, Follow-up
+INFO 2024-11-11 00:03:39,993 views Transition history saved.
+INFO 2024-11-11 00:03:39,993 views Calling _move_to_stage for patient ID 38 with cohort A
+INFO 2024-11-11 00:03:39,993 views Entered _move_to_stage function for patient ID: 38.
+INFO 2024-11-11 00:03:39,993 views Attempting to create a new stage for patient ID 38 in cohort A
+INFO 2024-11-11 00:03:40,009 views New stage instance created for patient ID 38 in cohort A
+INFO 2024-11-11 00:03:40,014 views Patient moved to stage A successfully.
+INFO 2024-11-11 00:03:40,014 basehttp "PUT /api/patients/38/transition/ HTTP/1.1" 200 63
+INFO 2024-11-11 00:03:47,890 basehttp "GET /admin/patients/followupstage/ HTTP/1.1" 200 15552
+INFO 2024-11-11 00:03:47,926 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-11 00:03:59,685 views Retrieving history for patient ID: 38
+INFO 2024-11-11 00:03:59,693 basehttp "GET /api/patients/38/history/ HTTP/1.1" 200 213
