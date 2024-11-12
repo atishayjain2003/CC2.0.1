@@ -810,3 +810,34 @@ INFO 2024-11-12 05:51:17,697 basehttp "POST /api/patients/ HTTP/1.1" 201 59
 INFO 2024-11-12 05:51:23,916 views Transition initiated for patient ID: 48
 WARNING 2024-11-12 05:51:23,916 views No transition applied.
 WARNING 2024-11-12 05:51:23,916 basehttp "PUT /api/patients/48/transition/ HTTP/1.1" 400 35
+INFO 2024-11-12 05:55:32,366 autoreload Watching for file changes with StatReloader
+INFO 2024-11-12 05:56:04,982 views Patient admitted successfully with ID: 49
+INFO 2024-11-12 05:56:04,986 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-12 05:56:11,750 views Transition initiated for patient ID: 49
+INFO 2024-11-12 05:56:11,750 views Evaluating transition for cohort: New Recommendations, sub-stage: A1
+INFO 2024-11-12 05:56:11,750 views Checking conditions for transition.
+INFO 2024-11-12 05:56:11,754 views All conditions met for transition.
+INFO 2024-11-12 05:56:11,770 views Patient cohort and sub-stage updated to: A, Follow-up
+INFO 2024-11-12 05:56:11,784 views Transition history saved.
+INFO 2024-11-12 05:56:11,788 views Calling _move_to_stage for patient ID 49 with cohort A
+INFO 2024-11-12 05:56:11,788 views Entered _move_to_stage function for patient ID: 49.
+INFO 2024-11-12 05:56:11,788 views Attempting to create a new stage for patient ID 49 in cohort A
+INFO 2024-11-12 05:56:11,804 views New stage instance created for patient ID 49 in cohort A
+INFO 2024-11-12 05:56:11,812 views Patient moved to stage A successfully.
+INFO 2024-11-12 05:56:11,812 basehttp "PUT /api/patients/49/transition/ HTTP/1.1" 200 63
+INFO 2024-11-12 05:56:20,254 views Retrieving history for patient ID: 49
+INFO 2024-11-12 05:56:20,298 basehttp "GET /api/patients/49/history/ HTTP/1.1" 200 213
+WARNING 2024-11-12 05:56:44,236 basehttp "GET / HTTP/1.1" 404 2316
+INFO 2024-11-12 05:56:46,837 basehttp "GET /admin/ HTTP/1.1" 200 18367
+INFO 2024-11-12 05:56:50,435 basehttp "GET /admin/patients/followupstage/ HTTP/1.1" 200 16116
+INFO 2024-11-12 05:56:50,471 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-12 05:56:55,367 basehttp "GET /admin/patients/followupstage/5/change/ HTTP/1.1" 200 19670
+INFO 2024-11-12 05:56:55,395 basehttp "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO 2024-11-12 05:56:55,399 basehttp "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+INFO 2024-11-12 05:56:55,407 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-12 05:56:55,407 basehttp "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO 2024-11-12 05:56:55,417 basehttp "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+INFO 2024-11-12 05:56:55,428 basehttp "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+INFO 2024-11-12 05:56:57,428 basehttp "GET /admin/patients/followupstage/ HTTP/1.1" 200 16116
+INFO 2024-11-12 05:57:11,884 basehttp "GET /admin/patients/followupstage/5/change/ HTTP/1.1" 200 19670
+INFO 2024-11-12 05:57:11,916 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
