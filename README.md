@@ -12,3 +12,9 @@ New changes ?
 1. Suppose we have a patient data , according to json structure it should now be moved to Follow UP stage in cohort A.
 2. Routing for that is fixed. The patient is getting saved in Follow UP stage.
 3. We now need to define it for every other bucket and it will be done
+
+Development?
+1. Patient Data is now being saved after transition
+
+*Important*
+1. The system now needs excessive testing to rule out any erros that might be present
