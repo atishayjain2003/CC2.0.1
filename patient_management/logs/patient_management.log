@@ -629,3 +629,184 @@ INFO 2024-11-11 00:03:47,890 basehttp "GET /admin/patients/followupstage/ HTTP/1
 INFO 2024-11-11 00:03:47,926 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
 INFO 2024-11-11 00:03:59,685 views Retrieving history for patient ID: 38
 INFO 2024-11-11 00:03:59,693 basehttp "GET /api/patients/38/history/ HTTP/1.1" 200 213
+INFO 2024-11-12 05:25:44,972 autoreload Watching for file changes with StatReloader
+INFO 2024-11-12 05:26:13,350 views Patient admitted successfully with ID: 39
+INFO 2024-11-12 05:26:13,351 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-12 05:26:20,673 views Transition initiated for patient ID: 39
+INFO 2024-11-12 05:26:20,673 views Evaluating transition for cohort: New Recommendations, sub-stage: A1
+INFO 2024-11-12 05:26:20,676 views Checking conditions for transition.
+INFO 2024-11-12 05:26:20,676 views All conditions met for transition.
+INFO 2024-11-12 05:26:20,693 views Patient cohort and sub-stage updated to: A, Follow-up
+INFO 2024-11-12 05:26:20,713 views Transition history saved.
+INFO 2024-11-12 05:26:20,713 views Calling _move_to_stage for patient ID 39 with cohort A
+INFO 2024-11-12 05:26:20,713 views Entered _move_to_stage function for patient ID: 39.
+INFO 2024-11-12 05:26:20,714 views Attempting to create a new stage for patient ID 39 in cohort A
+INFO 2024-11-12 05:26:20,729 views New stage instance created for patient ID 39 in cohort A
+INFO 2024-11-12 05:26:20,733 views Patient moved to stage A successfully.
+INFO 2024-11-12 05:26:20,738 basehttp "PUT /api/patients/39/transition/ HTTP/1.1" 200 63
+INFO 2024-11-12 05:26:28,192 views Retrieving history for patient ID: 39
+INFO 2024-11-12 05:26:28,253 basehttp "GET /api/patients/39/history/ HTTP/1.1" 200 213
+WARNING 2024-11-12 05:26:44,283 basehttp "GET / HTTP/1.1" 404 2316
+WARNING 2024-11-12 05:26:44,392 basehttp "GET /favicon.ico HTTP/1.1" 404 2367
+INFO 2024-11-12 05:26:48,736 basehttp "GET /admin/ HTTP/1.1" 200 18367
+INFO 2024-11-12 05:26:48,762 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:48,762 basehttp "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:48,762 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:48,775 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:48,780 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:48,780 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:48,787 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:48,805 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:48,806 basehttp "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:48,806 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:54,334 basehttp "GET /admin/patients/followupstage/ HTTP/1.1" 200 15832
+INFO 2024-11-12 05:26:54,370 basehttp "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:54,370 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:54,371 basehttp "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:54,378 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:54,379 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:54,379 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:54,382 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:54,382 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:54,385 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:54,396 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2024-11-12 05:26:54,459 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-12 05:26:54,496 basehttp "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+INFO 2024-11-12 05:28:37,553 views Patient admitted successfully with ID: 40
+INFO 2024-11-12 05:28:37,556 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-12 05:28:46,035 views Transition initiated for patient ID: 40
+INFO 2024-11-12 05:28:46,035 views Evaluating transition for cohort: Clinical Intervention, sub-stage: A2
+INFO 2024-11-12 05:28:46,035 views Checking conditions for transition.
+ERROR 2024-11-12 05:28:46,152 log Internal Server Error: /api/patients/40/transition/
+Traceback (most recent call last):
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py", line 239, in transition
+    if self._check_conditions(patient, transition['conditions']):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py", line 275, in _check_conditions
+    if not self._evaluate_condition(patient, action):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py", line 297, in _evaluate_condition
+    return patient_value > value
+           ^^^^^^^^^^^^^^^^^^^^^
+TypeError: '>' not supported between instances of 'int' and 'str'
+ERROR 2024-11-12 05:28:46,160 basehttp "PUT /api/patients/40/transition/ HTTP/1.1" 500 107278
+INFO 2024-11-12 05:29:59,687 basehttp "GET /admin/patients/patient/ HTTP/1.1" 200 23345
+INFO 2024-11-12 05:29:59,733 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-11-12 05:30:06,086 basehttp "GET /admin/patients/patienthistory/ HTTP/1.1" 200 23638
+INFO 2024-11-12 05:30:06,127 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+WARNING 2024-11-12 05:30:42,269 views Patient admission failed with errors: {'admission_status': [ErrorDetail(string='This field may not be null.', code='null')]}
+WARNING 2024-11-12 05:30:42,273 basehttp "POST /api/patients/ HTTP/1.1" 400 52
+WARNING 2024-11-12 05:31:28,822 views Patient admission failed with errors: {'admission_status': [ErrorDetail(string='"Pending" is not a valid choice.', code='invalid_choice')]}
+WARNING 2024-11-12 05:31:28,826 basehttp "POST /api/patients/ HTTP/1.1" 400 59
+INFO 2024-11-12 05:31:56,336 views Patient admitted successfully with ID: 41
+INFO 2024-11-12 05:31:56,336 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-12 05:32:05,883 views Transition initiated for patient ID: 41
+INFO 2024-11-12 05:32:05,883 views Evaluating transition for cohort: Clinical Intervention, sub-stage: A2
+INFO 2024-11-12 05:32:05,887 views Checking conditions for transition.
+ERROR 2024-11-12 05:32:05,960 log Internal Server Error: /api/patients/41/transition/
+Traceback (most recent call last):
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\DELL\Desktop\CC2.0.1\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py", line 239, in transition
+    if self._check_conditions(patient, transition['conditions']):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py", line 275, in _check_conditions
+    if not self._evaluate_condition(patient, action):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\views.py", line 297, in _evaluate_condition
+    return patient_value > value
+           ^^^^^^^^^^^^^^^^^^^^^
+TypeError: '>' not supported between instances of 'int' and 'str'
+ERROR 2024-11-12 05:32:05,972 basehttp "PUT /api/patients/41/transition/ HTTP/1.1" 500 107281
+WARNING 2024-11-12 05:36:03,055 views Patient admission failed with errors: {'admission_status': [ErrorDetail(string='"Scheduled" is not a valid choice.', code='invalid_choice')]}
+WARNING 2024-11-12 05:36:03,055 basehttp "POST /api/patients/ HTTP/1.1" 400 61
+INFO 2024-11-12 05:38:18,691 views Patient admitted successfully with ID: 42
+INFO 2024-11-12 05:38:18,696 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-12 05:38:24,931 views Transition initiated for patient ID: 42
+WARNING 2024-11-12 05:38:24,931 views No transition applied.
+WARNING 2024-11-12 05:38:24,931 basehttp "PUT /api/patients/42/transition/ HTTP/1.1" 400 35
+WARNING 2024-11-12 05:40:00,553 views Patient admission failed with errors: {'admission_status': [ErrorDetail(string='"Completed" is not a valid choice.', code='invalid_choice')]}
+WARNING 2024-11-12 05:40:00,557 basehttp "POST /api/patients/ HTTP/1.1" 400 61
+WARNING 2024-11-12 05:41:25,377 views Patient admission failed with errors: {'admission_status': [ErrorDetail(string='"Pending" is not a valid choice.', code='invalid_choice')]}
+WARNING 2024-11-12 05:41:25,381 basehttp "POST /api/patients/ HTTP/1.1" 400 59
+INFO 2024-11-12 05:41:49,427 views Patient admitted successfully with ID: 43
+INFO 2024-11-12 05:41:49,429 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-12 05:41:56,227 views Transition initiated for patient ID: 43
+WARNING 2024-11-12 05:41:56,227 views No transition applied.
+WARNING 2024-11-12 05:41:56,231 basehttp "PUT /api/patients/43/transition/ HTTP/1.1" 400 35
+INFO 2024-11-12 05:42:09,256 views Patient admitted successfully with ID: 44
+INFO 2024-11-12 05:42:09,260 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-12 05:42:15,182 views Transition initiated for patient ID: 44
+WARNING 2024-11-12 05:42:15,182 views No transition applied.
+WARNING 2024-11-12 05:42:15,182 basehttp "PUT /api/patients/44/transition/ HTTP/1.1" 400 35
+INFO 2024-11-12 05:45:12,527 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-12 05:45:13,585 autoreload Watching for file changes with StatReloader
+INFO 2024-11-12 05:45:16,326 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-12 05:45:17,293 autoreload Watching for file changes with StatReloader
+INFO 2024-11-12 05:45:21,042 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-12 05:45:22,084 autoreload Watching for file changes with StatReloader
+INFO 2024-11-12 05:45:26,877 autoreload C:\Users\DELL\Desktop\CC2.0.1\patient_management\patients\models.py changed, reloading.
+INFO 2024-11-12 05:45:27,956 autoreload Watching for file changes with StatReloader
+INFO 2024-11-12 05:45:54,366 autoreload Watching for file changes with StatReloader
+INFO 2024-11-12 05:46:05,323 views Patient admitted successfully with ID: 45
+INFO 2024-11-12 05:46:05,323 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-12 05:46:11,725 views Transition initiated for patient ID: 45
+WARNING 2024-11-12 05:46:11,725 views No transition applied.
+WARNING 2024-11-12 05:46:11,729 basehttp "PUT /api/patients/45/transition/ HTTP/1.1" 400 35
+INFO 2024-11-12 05:49:14,996 views Patient admitted successfully with ID: 46
+INFO 2024-11-12 05:49:15,000 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-12 05:49:22,967 views Transition initiated for patient ID: 46
+WARNING 2024-11-12 05:49:22,967 views No transition applied.
+WARNING 2024-11-12 05:49:22,970 basehttp "PUT /api/patients/46/transition/ HTTP/1.1" 400 35
+INFO 2024-11-12 05:50:01,796 views Patient admitted successfully with ID: 47
+INFO 2024-11-12 05:50:01,796 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-12 05:50:09,127 views Transition initiated for patient ID: 47
+WARNING 2024-11-12 05:50:09,127 views No transition applied.
+WARNING 2024-11-12 05:50:09,131 basehttp "PUT /api/patients/47/transition/ HTTP/1.1" 400 35
+INFO 2024-11-12 05:51:17,697 views Patient admitted successfully with ID: 48
+INFO 2024-11-12 05:51:17,697 basehttp "POST /api/patients/ HTTP/1.1" 201 59
+INFO 2024-11-12 05:51:23,916 views Transition initiated for patient ID: 48
+WARNING 2024-11-12 05:51:23,916 views No transition applied.
+WARNING 2024-11-12 05:51:23,916 basehttp "PUT /api/patients/48/transition/ HTTP/1.1" 400 35

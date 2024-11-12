@@ -5,7 +5,7 @@ from .models import (
     Patient, PatientHistory, NewRecommendationsStage, FollowUpStage,
     ClinicalInterventionStage, QuotationPhaseStage, ReadyToScheduleStage,
     PreAdmissionPrepStage, PostponedAdmissionsStage, ClinicalStage,
-    InitialTransitionStage, FinalTransitionStage, ClosedStage,CohortAStage
+    InitialTransitionStage, FinalTransitionStage, ClosedStage,CohortAStage,CohortBStage,CohortCStage,CohortDStage,CohortEStage,
 )
 from .serializers import PatientSerializer, PatientHistorySerializer
 import logging
@@ -309,14 +309,18 @@ class PatientViewSet(viewsets.ViewSet):
             "Follow-up": FollowUpStage,
             "Clinical Intervention": ClinicalInterventionStage,
             "Quotation Phase": QuotationPhaseStage,
-                "Ready to Schedule": ReadyToScheduleStage,
-                "Pre-Admission Prep": PreAdmissionPrepStage,
+            "Ready to Schedule": ReadyToScheduleStage,
+            "Pre-Admission Prep": PreAdmissionPrepStage,
             "Postponed Admissions": PostponedAdmissionsStage,
             "Clinical Stage": ClinicalStage,
             "Initial Transition": InitialTransitionStage,
             "Final Transition": FinalTransitionStage,
             "Closed": ClosedStage,
-            "A": CohortAStage  # Special case for Cohort A
+            "A": CohortAStage,
+            "B": CohortBStage,
+            "C": CohortCStage,
+            "D": CohortDStage,
+            "E": CohortEStage     
         }
 
         try:
@@ -327,6 +331,54 @@ class PatientViewSet(viewsets.ViewSet):
                     stage_class = NewRecommendationsStage
                 elif patient.current_sub_stage == "Follow-up":
                     stage_class = FollowUpStage
+                else:
+                    logger.error(f"Invalid sub-stage for Cohort A: {patient.current_sub_stage}")
+                    return Response(
+                        {"error": f"Invalid sub-stage for Cohort A: {patient.current_sub_stage}"},
+                        status=status.HTTP_400_BAD_REQUEST
+                    )
+            elif patient.current_cohort == "B":
+                # Decide which sub-stage to assign based on the patient's current sub-stage
+                if patient.current_sub_stage == "Clinical Intervention":
+                    stage_class = ClinicalInterventionStage
+                elif patient.current_sub_stage == "Quotation Phase":
+                    stage_class = QuotationPhaseStage
+                else:
+                    logger.error(f"Invalid sub-stage for Cohort A: {patient.current_sub_stage}")
+                    return Response(
+                        {"error": f"Invalid sub-stage for Cohort A: {patient.current_sub_stage}"},
+                        status=status.HTTP_400_BAD_REQUEST
+                    )
+            elif patient.current_cohort == "C":
+                # Decide which sub-stage to assign based on the patient's current sub-stage
+                if patient.current_sub_stage == "Ready To Schedule":
+                    stage_class = ReadyToScheduleStage
+                elif patient.current_sub_stage == "Pre Admission Prep":
+                    stage_class = PreAdmissionPrepStage
+                elif patient.current_sub_stage == "Postponed Admission":
+                    stage_class = PostponedAdmissionsStage
+                else:
+                    logger.error(f"Invalid sub-stage for Cohort A: {patient.current_sub_stage}")
+                    return Response(
+                        {"error": f"Invalid sub-stage for Cohort A: {patient.current_sub_stage}"},
+                        status=status.HTTP_400_BAD_REQUEST
+                    )
+            elif patient.current_cohort == "D":
+                # Decide which sub-stage to assign based on the patient's current sub-stage
+                if patient.current_sub_stage == "Clinical Stage":
+                    stage_class = ClinicalStage
+                else:
+                    logger.error(f"Invalid sub-stage for Cohort A: {patient.current_sub_stage}")
+                    return Response(
+                        {"error": f"Invalid sub-stage for Cohort A: {patient.current_sub_stage}"},
+                        status=status.HTTP_400_BAD_REQUEST
+                    )
+            elif patient.current_cohort == "E":
+                # Decide which sub-stage to assign based on the patient's current sub-stage
+                if patient.current_sub_stage == "Initial Transition":
+                    stage_class = InitialTransitionStage
+                elif patient.current_sub_stage == "Final Transition":
+                    stage_class = FinalTransitionStage
                 else:
                     logger.error(f"Invalid sub-stage for Cohort A: {patient.current_sub_stage}")
                     return Response(

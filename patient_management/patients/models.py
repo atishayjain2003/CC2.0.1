@@ -24,7 +24,7 @@ class Patient(models.Model):
     admission_completed = models.BooleanField(default=False)
     lead_management_ends = models.BooleanField(default=False)
     final_response_received = models.BooleanField(default=False)
-    admission_status = models.CharField(max_length=50, choices=[('Postponed', 'Postponed'), ('Cancelled', 'Cancelled')], default='Postponed')
+    admission_status = models.CharField(max_length=50, choices=[('Postponed', 'Postponed'), ('Cancelled', 'Cancelled'), ('Pending', 'Pending')], default='Postponed')
     follow_up_attempts = models.CharField(max_length=50, default='None')
 
     def __str__(self):
@@ -58,6 +58,31 @@ class CohortAStage(PatientStage):
 
     class Meta:
         abstract = True  # Make this model abstract as it's for subclassing
+class CohortBStage(PatientStage):
+    # Cohort A-specific fields, if any common field across stages
+    #cohort_a_specific_field = models.CharField(max_length=100, null=True, blank=True)  # Example
+
+    class Meta:
+        abstract = True  # Make this model abstract as it's for subclassing
+class CohortCStage(PatientStage):
+    # Cohort A-specific fields, if any common field across stages
+    #cohort_a_specific_field = models.CharField(max_length=100, null=True, blank=True)  # Example
+
+    class Meta:
+        abstract = True  # Make this model abstract as it's for subclassing
+class CohortDStage(PatientStage):
+    # Cohort A-specific fields, if any common field across stages
+    #cohort_a_specific_field = models.CharField(max_length=100, null=True, blank=True)  # Example
+
+    class Meta:
+        abstract = True  # Make this model abstract as it's for subclassing
+class CohortEStage(PatientStage):
+    # Cohort A-specific fields, if any common field across stages
+    #cohort_a_specific_field = models.CharField(max_length=100, null=True, blank=True)  # Example
+
+    class Meta:
+        abstract = True  # Make this model abstract as it's for subclassing
+        
 
 class NewRecommendationsStage(CohortAStage):
     days_since_follow_up = models.IntegerField(default=0)
@@ -75,39 +100,39 @@ class FollowUpStage(CohortAStage):
         return f"{self.patient.name}"
 
 
-class ClinicalInterventionStage(PatientStage):
+class ClinicalInterventionStage(CohortBStage):
     clinical_intervention_completed = models.BooleanField(default=False)
     quotation_accepted = models.BooleanField(default=False)
 
 
-class QuotationPhaseStage(PatientStage):
+class QuotationPhaseStage(CohortBStage):
     quotation_accepted = models.BooleanField(default=False)
     days_since_last_contact = models.IntegerField(default=0)
 
 
-class ReadyToScheduleStage(PatientStage):
+class ReadyToScheduleStage(CohortCStage):
     scheduled_admission = models.BooleanField(default=False)
 
 
-class PreAdmissionPrepStage(PatientStage):
+class PreAdmissionPrepStage(CohortCStage):
     days_until_admission = models.IntegerField(default=0)
     admission_status = models.CharField(max_length=50, choices=[('Postponed', 'Postponed'), ('Cancelled', 'Cancelled')], default='Postponed')
 
 
-class PostponedAdmissionsStage(PatientStage):
+class PostponedAdmissionsStage(CohortCStage):
     scheduled_date_in_past = models.BooleanField(default=False)
     admission_completed = models.BooleanField(default=False)
 
 
-class ClinicalStage(PatientStage):
+class ClinicalStage(CohortDStage):
     clinical_intervention_completed = models.BooleanField(default=False)
 
 
-class InitialTransitionStage(PatientStage):
+class InitialTransitionStage(CohortEStage):
     lead_management_ends = models.BooleanField(default=False)
 
 
-class FinalTransitionStage(PatientStage):
+class FinalTransitionStage(CohortEStage):
     follow_up_attempts = models.CharField(max_length=50, default='None')
     final_response_received = models.BooleanField(default=False)
 
